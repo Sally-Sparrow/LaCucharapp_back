@@ -1,1 +1,13 @@
-GET http://localhost:3000/api/clientes
+
+# DEVUELVE los datos de las reservas
+GET http://localhost:3000/api/book
+
+###
+
+# EDITAR datos de una reserva
+PUT http://localhost:3000/api/book
+
+###
+
+# BORRA los datos de una reserva
+DELETE http://localhost:3000/api/book

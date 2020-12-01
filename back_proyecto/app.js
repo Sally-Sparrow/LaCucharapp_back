@@ -8,7 +8,7 @@ require('./dbconfig').createPool();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const clientesRoutes = require('./routes/api/clientes');
+const clientesRoutes = require('./routes/api/book');
 
 
 var app = express();
@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/clientes', clientesRoutes);
+app.use('/api/book', clientesRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
