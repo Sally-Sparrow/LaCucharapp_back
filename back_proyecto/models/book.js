@@ -22,7 +22,7 @@ const getByFecha = ( pFecha ) => {
 
 const getMesasOfReserva = ( pReservaId ) => {
     return new Promise( (resolve, reject) => {
-        db.query( 'SELECT * FROM tbi_servicios_mesas tbi, restaurante.mesas m WHERE tbi.fk_mesas = m.id AND tbi.fk_servicio = ?;', [pReservaId], (error, rows) => {
+        db.query( 'SELECT m.numero FROM tbi_servicios_mesas tbi, restaurante.mesas m WHERE tbi.fk_mesas = m.id AND tbi.fk_servicio = ?;', [pReservaId], (error, rows) => {
             if(error) reject(error);
             resolve(rows);
         });
