@@ -1,0 +1,41 @@
+extends ../layout.pug
+
+block content
+    h2 Nueva Reserva;
+    //- Al haber hecho esto: ya está recibiendo los datos, con name en cada input
+    form(method="POST", action="/book")
+        .form-group 
+            label Nombre
+            input.form-control(type="text", name="nombre")
+        .form-group 
+            label Apellidos
+            input.form-control(type="text", name="apellidos")
+        .form-group 
+            label Teléfono
+            input.form-control(type="text", name="telefono")
+        .form-group 
+            label Email
+            input.form-control(type="text", name="email")
+        .form-group 
+            label Fecha
+            input.form-control(type="text", name="fecha")
+        .form-group 
+            label Hora
+            select.form-control(name="hora_inicio")
+                option(value="13") 13:00
+                option(value="1330") 13:30
+                option(value="2100") 21:00
+                option(value="2130") 21:30
+        .form-group 
+            label Mesa
+            input.form-control(type="number", name="mesa")
+        .form-group 
+            label Pax
+            input.form-control(type="number", name="pax")
+        .form-group 
+            label Notas
+            input.form-control(type="text", name="notas")
+        input.btn.btn-block.btn-danger(type="submit" value="Pedro")
+        input.btn.btn-block.btn-danger(type="submit" value="Javier")
+        input.btn.btn-block.btn-danger(type="submit" value="Estela")   
+            
