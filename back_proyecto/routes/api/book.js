@@ -10,11 +10,10 @@ router.get('/', async (req, res) => {
         const reservas = await getByFecha( '2020-11-30' );
         for(let reserva of reservas){
             reserva.mesas = await getMesasOfServicio(reserva.id)
-            console.log(reservas.id);
+            //console.log(reserva.id);
             console.log( reservas );
         }
         res.json(reservas);
-        //console.log(rows);
     }catch (error){  res.json({ error: error.message });  }
     
 });
