@@ -1,47 +1,46 @@
 extends ../layout.pug
 
 block content
-    h2 Editar datos de cliente;
-    //- mismo formulario, se envia a otro sitio
-    form(method="POST", action="/clientes/update")
+    h2 Editar Reserva;
+    form(method="POST", action="/book/edit")
         .form-group 
             label Nombre
-            input.form-control(type="text", name="nombre" value=cliente.nombre)
+            input.form-control(type="text", name="nombre" value=reserva.nombre)
         .form-group 
             label Apellidos
-            input.form-control(type="text", name="apellidos" value=cliente.apellidos)
+            input.form-control(type="text", name="apellidos" value=reserva.apellidos)
         .form-group 
-            label Direccion
-            input.form-control(type="text", name="direccion" value=cliente.direccion)
+            label Teléfono
+            input.form-control(type="text", name="telefono" value=reserva.telefono)
         .form-group 
-            label email
-            input.form-control(type="text", name="email" value=cliente.email)
+            label Email
+            input.form-control(type="text", name="email" value=reserva.email)
         .form-group 
-            label Edad
-            input.form-control(type="text", name="edad" value=cliente.edad)
+            label Fecha
+            input.form-control(type="text", name="fecha" value=reserva.fecha)
         .form-group 
-            label Sexo
-            select.form-control(name="sexo")
-                option(value="m") Masculino
-                option(value="f") Femenino
+            label Hora
+            select.form-control(name="hora_inicio")
+                option(value=reserva.hora_inicio)
+                option(value="13") 13:00
+                option(value="1330") 13:30
+                option(value="2100") 21:00
+                option(value="2130") 21:30
         .form-group 
-            label Fecha de inscripción
-            input.form-control(type="text", name="fecha_inscripcion" value=cliente.fecha_inscripcion)
+            label Mesa
+            input.form-control(type="text", name="mesa" value=reserva.mesas[0])
         .form-group 
-            label Cuota
-            input.form-control(type="text", name="cuota" value=cliente.cuota)
+            label Pax
+            input.form-control(type="text", name="pax" value=reserva.pax)
         .form-group 
-            label Fecha de nacimiento
-            input.form-control(type="text", name="fecha_nacimiento" value=cliente.fecha_nacimiento)
-        .form-group 
-            label DNI
-            input.form-control(type="text", name="dni" value=cliente.dni)
-        .form-group 
-            label Profesor
-            input.form-control(type="text", name="profesor" value=cliente.profesor) 
+            label Notas
+            input.form-control(type="text", name="notas" value=reserva.notas)
+        input(type="hidden", name="reservaId", value=reserva.id)
+        input.btn.btn-block.btn-danger(type="submit" value="Pedro")
+        input.btn.btn-block.btn-danger(type="submit" value="Javier")
+        input.btn.btn-block.btn-danger(type="submit" value="Estela") 
         
         //- hay que pasar el id del cliente que vas a modificar:
-        input(type="hidden", name="clienteId", value=cliente.id)
-        input.btn.btn-block.btn-warning(type="submit" value="Enviar")   
+        //- input(type="hidden", name="reservaId", value=reserva.id)
+        //- input.btn.btn-block.btn-warning(type="submit" value="Enviar")   
             
-//- Campos de cliente: apellidos, direccion, email, edad, sexo, fecha_inscripcion, cuota, fecha_nacimiento, dni, profesor

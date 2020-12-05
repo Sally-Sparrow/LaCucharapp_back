@@ -5,14 +5,4 @@ GET http://localhost:3000/api/book
 ###
 
 # EDITAR datos de una reserva
-PUT http://localhost:3000/api/book
-
-###
-
-# BORRA los datos de una reserva
-DELETE http://localhost:3000/api/book
-
-### 
-
-# NUEVA reserva
-POST http://localhost:3000/api/book
+GET http://localhost:3000/api/book/edit/1
