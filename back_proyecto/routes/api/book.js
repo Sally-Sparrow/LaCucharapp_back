@@ -5,9 +5,10 @@ const { getByFecha, getMesasOfServicio, getReservaById } = require('../../models
 
 
 //* RECUPERA los datos de todas las reservas por fecha
-router.get('/', async (req, res) => {
+router.get('/:fecha', async (req, res) => {
     try{
-        const reservas = await getByFecha( '2020-11-30' );
+        const reservas = await getByFecha( req.params.fecha );
+        console.log(req.params.fecha);
         for(let reserva of reservas){
             reserva.mesas = await getMesasOfServicio(reserva.id)
             //console.log(reserva.id);

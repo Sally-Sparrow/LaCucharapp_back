@@ -53,7 +53,7 @@ app.get('/api', function (req, res, next) {
 });
 
 app.listen(4200, function () {
-  console.log('funsiona en el puerto 3000');
+  console.log('funsiona en el puerto 4200');
 })
 
 //console.log(config);
