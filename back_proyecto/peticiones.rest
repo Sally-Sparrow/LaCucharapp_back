@@ -1,6 +1,6 @@
-
+### BOKK
 # DEVUELVE los datos de las reservas
-GET http://localhost:3000/api/book
+GET http://localhost:3000/api/book/2020-12-06
 # Content-Type: application/json
 
 # {
@@ -11,3 +11,7 @@ GET http://localhost:3000/api/book
 
 # EDITAR datos de una reserva
 GET http://localhost:3000/api/book/edit/1
+
+### MAP
+# RECUPERA los datos de las mesas para pintar el map
+GET http://localhost:3000/api/map

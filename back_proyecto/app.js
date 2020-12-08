@@ -9,7 +9,7 @@ require('./dbconfig').createPool();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const clientesRoutes = require('./routes/api');
+const apiRoutes = require('./routes/api');
 //!const config = require('./config');
 
 
@@ -29,7 +29,7 @@ app.use(cors())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', clientesRoutes);
+app.use('/api', apiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,8 +48,8 @@ app.use(function(err, req, res, next) {
 });
 
 //? 
-app.get('/api', function (req, res, next) {
-  res.json({msg: 'FUNSIONA !!'})
+app.get('/api', function (req, res, next ) {
+  res.json({msg: 'Me cago en las rutas'})
 });
 
 app.listen(4200, function () {
