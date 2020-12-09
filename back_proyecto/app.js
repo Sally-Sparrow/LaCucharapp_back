@@ -47,7 +47,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//? 
+//?? 
 // app.get('/api', function (req, res, next ) {
 //   res.json({msg: 'Me cago en las rutas'})
 // });
