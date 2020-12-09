@@ -9,12 +9,8 @@ require('./dbconfig').createPool();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-<<<<<<< HEAD
 const apiRoutes = require('./routes/api');
-=======
-const clientesRoutes = require('./routes/api');
 const reserveRoutes = require('./routes/reserves')
->>>>>>> 351475b2b7a2b70186acd3d3620a8e21f843b3da
 //!const config = require('./config');
 
 
@@ -35,7 +31,6 @@ app.use(cors())
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', apiRoutes);
-app.use('/api', clientesRoutes);
 app.use('/reserves', reserveRoutes);
 
 
