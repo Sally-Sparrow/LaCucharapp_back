@@ -48,13 +48,13 @@ app.use(function(err, req, res, next) {
 });
 
 //? 
-app.get('/api', function (req, res, next ) {
-  res.json({msg: 'Me cago en las rutas'})
-});
+// app.get('/api', function (req, res, next ) {
+//   res.json({msg: 'Me cago en las rutas'})
+// });
 
-app.listen(4200, function () {
-  console.log('funsiona en el puerto 4200');
-})
+// app.listen(4200, function () {
+//   console.log('funsiona en el puerto 4200');
+// })
 
 //console.log(config);
 //!app.use( cors(config.application.cors.server) );
