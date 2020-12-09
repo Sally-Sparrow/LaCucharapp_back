@@ -2,7 +2,7 @@ extends ../layout.pug
 
 block content
     h2 Nueva Reserva;
-    form(method="POST", action="/book")
+    form(method="POST", action="/reserve/nueva")
         .form-group 
             label Nombre
             input.form-control(type="text", name="nombre")
