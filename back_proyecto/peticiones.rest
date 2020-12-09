@@ -15,3 +15,27 @@ GET http://localhost:3000/api/book/edit/1
 ### MAP
 # RECUPERA los datos de las mesas para pintar el map
 GET http://localhost:3000/api/map
+###
+
+# CREAR una nueva reserva 
+POST http://localhost:3000/api/reserve/nueva  
+Content-Type: application/json
+
+{
+    "nombre": "Pepe",
+    "apellidos": "rodriguez",
+    "email": "",
+    "telefono": 123456789,
+    "numero": 9,
+    "fecha": "2020-12-10",
+    "hora_inicio": "21:30",
+    "pax": 4,
+    "notas": "son imbeciles"
+    
+}
+
+
+###
+
+
+
