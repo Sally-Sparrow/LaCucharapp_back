@@ -25,6 +25,16 @@ const resService = (fecha, hora_inicio, pax, notas) => {
     });
 };
 
+// Id del servicio 
+const getIdService = (fecha, hora_inicio, fk_cliente) => {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT servicios.id FROM servicios WHERE servicios.fecha = ? AND servicios.hora_inicio = ? AND servicios.fk_cliente = ?'), [fecha, hora_inicio, fk_cliente], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        }
+    })
+}
+
 
 
 //Crea el número de mesa 
@@ -39,14 +49,29 @@ const resTable = (numero) => {
 };
 
 
+//COMPROBAR SI EL CLIENTE EXISTE
+const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => {
+    return new Promise((resolve, reject) => {
 
+        db.query('SELECT clientes.id FROM restaurante.clientes WHERE clientes.nombre = ? AND clientes.apellidos = ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        });
+    });
+};
 
-
-
+const insertClient = () => {
+    return new Promise((resolve, reject) => {
+        db.query('INSERT INTO clientes ( nombre, apellidos, email, telefono ) VALUES (?, ?, ?, ?)', [pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail], (error, result) => {
+            if (error) reject(error);
+            resolve(clienteId);
+        });
+    });
+};
 
 
 
 module.exports = {
-    resClient, resTable, resService
+    resClient, resTable, resService, buscarIdCliente, insertClient, getIdService
 }
 

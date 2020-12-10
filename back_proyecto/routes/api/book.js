@@ -6,10 +6,10 @@ const { getByFecha, getMesasOfServicio, getReservaById } = require('../../models
 
 //* RECUPERA los datos de todas las reservas por fecha
 router.get('/:fecha', async (req, res) => {
-    try{
-        const reservas = await getByFecha( req.params.fecha );
+    try {
+        const reservas = await getByFecha(req.params.fecha);
         console.log(req.params.fecha);
-        for(let reserva of reservas){
+        for (let reserva of reservas) {
             reserva.mesas = await getMesasOfServicio(reserva.id)
             console.log(reservas);
         }
@@ -24,12 +24,10 @@ router.get('/:fecha', async (req, res) => {
 //* Recupera los datos de una única reserva por su id
 router.get('/edit/:idservicio', async (req, res) => {
     try {
-        //console.log(req.params);
         const reserva = await getReservaById(req.params.idservicio);
         reserva.mesas = await getMesasOfServicio(req.params.idservicio);
         reserva.id = req.params.idservicio;
         console.log(reserva);
-        //res.json( reserva );
         res.render('reservas/edit', { reserva });
 
     } catch (error) { res.json({ error: error.message }) }
