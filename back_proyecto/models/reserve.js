@@ -2,10 +2,7 @@
 // Crea los datos del cliente 
 const resClient = (nombre, apellidos, telefono, email) => {
     return new Promise((resolve, reject) => {
-        db.query(
-            'insert into restaurante.clientes (nombre, apellidos, email, telefono) values (?, ?, ?, ? )',
-            [nombre, apellidos, email, telefono],
-            (error, result) => {
+        db.query('insert into restaurante.clientes (nombre, apellidos, email, telefono) values (?, ?, ?, ? )', [nombre, apellidos, email, telefono], (error, result) => {
                 if (error) reject(error);
                 resolve(result);
             }
@@ -15,10 +12,9 @@ const resClient = (nombre, apellidos, telefono, email) => {
 
 //Crea los datos del servicio 
 
-const resService = (fecha, hora_inicio, pax, notas) => {
+const insertService = (fecha, hora_inicio, pax, notas, fk_cliente) => {
     return new Promise((resolve, reject) => {
-        db.query('insert into restaurante.servicios (fecha, hora_inicio, pax, notas) values (?, ?, ?, ?)',
-            [fecha, hora_inicio, pax, notas], (error, result) => {
+        db.query('insert into restaurante.servicios (fecha, hora_inicio, pax, notas, fk_cliente) values (?, ?, ?, ?, ?)', [fecha, hora_inicio, pax, notas, fk_cliente], (error, result) => {
                 if (error) reject(error);
                 resolve(result);
             });
@@ -28,12 +24,12 @@ const resService = (fecha, hora_inicio, pax, notas) => {
 // Id del servicio 
 const getIdService = (fecha, hora_inicio, fk_cliente) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT servicios.id FROM servicios WHERE servicios.fecha = ? AND servicios.hora_inicio = ? AND servicios.fk_cliente = ?'), [fecha, hora_inicio, fk_cliente], (error, result) => {
+        db.query('SELECT servicios.id FROM servicios WHERE servicios.fecha = ? AND servicios.hora_inicio = ? AND servicios.fk_cliente = ?', [fecha, hora_inicio, fk_cliente], (error, result) => {
             if (error) reject(error);
             resolve(result);
-        }
-    })
-}
+        });
+    });
+};
 
 
 
@@ -52,7 +48,6 @@ const resTable = (numero) => {
 //COMPROBAR SI EL CLIENTE EXISTE
 const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => {
     return new Promise((resolve, reject) => {
-
         db.query('SELECT clientes.id FROM restaurante.clientes WHERE clientes.nombre = ? AND clientes.apellidos = ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
             if (error) reject(error);
             resolve(result);
@@ -60,18 +55,20 @@ const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => 
     });
 };
 
-const insertClient = () => {
+const insertClient = ( pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail ) => {
     return new Promise((resolve, reject) => {
-        db.query('INSERT INTO clientes ( nombre, apellidos, email, telefono ) VALUES (?, ?, ?, ?)', [pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail], (error, result) => {
+        db.query('INSERT INTO clientes ( nombre, apellidos, telefono, email ) VALUES (?, ?, ?, ?)', [pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail], (error, result) => {
             if (error) reject(error);
-            resolve(clienteId);
+            resolve(result);
         });
     });
 };
 
 
 
+
+
 module.exports = {
-    resClient, resTable, resService, buscarIdCliente, insertClient, getIdService
+    resClient, resTable, insertService, buscarIdCliente, insertClient, getIdService
 }
 
