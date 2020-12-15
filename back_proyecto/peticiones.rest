@@ -1,11 +1,9 @@
-### BOKK
+### BOOK
 # DEVUELVE los datos de las reservas
-GET http://localhost:3000/api/book/2020-12-06
+GET http://localhost:3000/api/book/2020-12-15
 # Content-Type: application/json
 
-# {
-#     "fecha": "2020-11-30"
-# }
+
 
 ###
 
@@ -25,13 +23,20 @@ Content-Type: application/json
     "nombre": "Teo4",
     "apellidos": "Va4",
     "email": "teo4@gmail.com",
-    "telefono": 444444444,
+    "telefono": 44444,
     "numero": 4,
-    "fecha": "2020-12-11",
-    "hora_inicio": "2020-12-11 21:30",
+    "fecha": "2020-12-01",
+    "hora_inicio": "21:30",
     "pax": 4,
     "notas": "El de los libros 4"
 }
+
+###
+
+ GET http://localhost:3000/api/reserve/id
+ 
+
+
 
 
 ###

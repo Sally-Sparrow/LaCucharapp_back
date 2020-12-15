@@ -1,30 +1,20 @@
 
-// Crea los datos del cliente 
-const resClient = (nombre, apellidos, telefono, email) => {
+// Crea los datos del cliente //! OK
+const insertClient = (nombre, apellidos, telefono, email) => {
     return new Promise((resolve, reject) => {
-        db.query('insert into restaurante.clientes (nombre, apellidos, email, telefono) values (?, ?, ?, ? )', [nombre, apellidos, email, telefono], (error, result) => {
-                if (error) reject(error);
-                resolve(result);
-            }
+        db.query('insert into restaurante.clientes (nombre, apellidos, telefono, email ) values (?, ?, ?, ? )', [nombre, apellidos, telefono, email], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        }
         )
     });
 }
 
-//Crea los datos del servicio 
+//Crea los datos de la reserva //! Antes hay que pasarle las fk
 
-const insertService = (fecha, hora_inicio, pax, notas, fk_cliente) => {
+const insertService = (fecha, pax, notas, fk_clientes, fk_servicios, fk_mesas) => {
     return new Promise((resolve, reject) => {
-        db.query('insert into restaurante.servicios (fecha, hora_inicio, pax, notas, fk_cliente) values (?, ?, ?, ?, ?)', [fecha, hora_inicio, pax, notas, fk_cliente], (error, result) => {
-                if (error) reject(error);
-                resolve(result);
-            });
-    });
-};
-
-// Id del servicio 
-const getIdService = (fecha, hora_inicio, fk_cliente) => {
-    return new Promise((resolve, reject) => {
-        db.query('SELECT servicios.id FROM servicios WHERE servicios.fecha = ? AND servicios.hora_inicio = ? AND servicios.fk_cliente = ?', [fecha, hora_inicio, fk_cliente], (error, result) => {
+        db.query('insert into restaurante.reservas (fecha, notas, pax, fk_clientes, fk_servicios, fk_mesas) values (?, ?, ?, ?, ?, ?);', [fecha, notas, pax, fk_clientes, fk_servicios, fk_mesas], (error, result) => {
             if (error) reject(error);
             resolve(result);
         });
@@ -32,8 +22,7 @@ const getIdService = (fecha, hora_inicio, fk_cliente) => {
 };
 
 
-
-//Crea el número de mesa 
+//Crea el número de mesa //! OK
 
 const resTable = (numero) => {
     return new Promise((resolve, reject) => {
@@ -44,31 +33,43 @@ const resTable = (numero) => {
     });
 };
 
+//Crea la hora de la reserva //!OK 
 
-//COMPROBAR SI EL CLIENTE EXISTE
+const insertHora = (hora_inicio) => {
+    return new Promise((resolve, reject) => {
+        db.query('insert into restaurante.servicios (hora_inicio) value (?)'[hora_inicio], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        })
+    })
+}
+
+
+//COMPROBAR SI EL CLIENTE EXISTE //!OK 
 const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => {
     return new Promise((resolve, reject) => {
-        db.query('SELECT clientes.id FROM restaurante.clientes WHERE clientes.nombre = ? AND clientes.apellidos = ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
+        db.query('SELECT clientes.idclientes FROM restaurante.clientes   WHERE clientes.nombre = ? AND clientes.apellidos= ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
             if (error) reject(error);
             resolve(result);
         });
     });
 };
 
-const insertClient = ( pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail ) => {
+//DEVUELVE EL ÚLTIMO ID CREADO EN LA TABLA CLIENTES //! HAY QUE PASARLO JUSTO DESPUES DE INSERTCLIENT
+
+const lastIdCreate = (pId) => {
     return new Promise((resolve, reject) => {
-        db.query('INSERT INTO clientes ( nombre, apellidos, telefono, email ) VALUES (?, ?, ?, ?)', [pClienteNombre, pClienteApellido, pClienteTelefono, pClienteEmail], (error, result) => {
+        db.query('SELECT DISTINCT LAST_INSERT_ID() FROM clientes', [pId], (error, result) => {
             if (error) reject(error);
             resolve(result);
-        });
-    });
-};
-
+        })
+    })
+}
 
 
 
 
 module.exports = {
-    resClient, resTable, insertService, buscarIdCliente, insertClient, getIdService
+    resTable, insertService, buscarIdCliente, insertClient, insertHora, lastIdCreate
 }
 
