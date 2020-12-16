@@ -4,11 +4,11 @@ const { insertService, insertTable, buscarIdCliente, insertClient, insertHora, l
 
 /* const idServicio = await getIdService(req.body.fecha, req.body.hora_inicio, idCliente); */
 //SI EXISTE CLIENTE -> recupera su id
-async const idCliente = await buscarIdCliente(req.body.nombre, req.body.apellidos, req.body.telefono);
-if (idCliente.length == 0) {
+// async const idCliente = await buscarIdCliente(req.body.nombre, req.body.apellidos, req.body.telefono);
+// if (idCliente.length == 0) {
     //SI NO EXISTE -> inserta el cliente
-    await insertClient(req.body.nombre, req.body.apellidos, req.body.telefono, req.body.email); //TODO ojo al mail si no viene el dato
-    console.log(idCliente);
+    // await insertClient(req.body.nombre, req.body.apellidos, req.body.telefono, req.body.email); //TODO ojo al mail si no viene el dato
+    // console.log(idCliente);
     /*  //Devuelve el id del cliente insertado
      console.log('cliente insertado en js');
      idCliente = await buscarIdCliente(req.body.nombre, req.body.apellidos, req.body.telefono);
@@ -88,7 +88,7 @@ if (idCliente.length == 0) {
         }
     }); */
 
-}
+//}
 
 
 module.exports = router;
