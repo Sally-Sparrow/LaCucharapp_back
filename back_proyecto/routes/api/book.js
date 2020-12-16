@@ -12,16 +12,15 @@ router.get('/:fecha', async (req, res) => {
             reserva.hora = await getHoraByIdServicios(reserva.fk_servicios);
             console.log(reserva.fk_mesas);
             let fkMesas = reserva.fk_mesas.split(',');
-            console.log('Alfredo', fkMesas);
+            console.log(fkMesas);
             const mesas = [];
             for (let mesa of fkMesas) {
-
                 let numeroMesa = await getNumeroMesaById(mesa)
                 mesas.push(numeroMesa[0].numero);
-
             }
             reserva.mesas = mesas;
             res.json(reserva);
+            console.log(mesas);
         }
     } catch (error) {
         res.json({ error: error.message })

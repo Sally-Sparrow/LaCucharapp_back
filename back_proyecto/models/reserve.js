@@ -1,5 +1,17 @@
 
-// Crea los datos del cliente //! OK
+//COMPROBAR SI EL CLIENTE EXISTE 
+const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT clientes.idclientes FROM restaurante.clientes   WHERE clientes.nombre = ? AND clientes.apellidos= ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        });
+    });
+};
+
+
+
+// Crea los datos del cliente 
 const insertClient = (nombre, apellidos, telefono, email) => {
     return new Promise((resolve, reject) => {
         db.query('insert into restaurante.clientes (nombre, apellidos, telefono, email ) values (?, ?, ?, ? )', [nombre, apellidos, telefono, email], (error, result) => {
@@ -24,7 +36,7 @@ const insertService = (fecha, pax, notas, fk_clientes, fk_servicios, fk_mesas) =
 
 //Crea el número de mesa //! OK
 
-const resTable = (numero) => {
+const insertTable = (numero) => {
     return new Promise((resolve, reject) => {
         db.query('insert into restaurante.mesas (numero) value (?)', [numero], (error, result) => {
             if (error) reject(error);
@@ -44,17 +56,6 @@ const insertHora = (hora_inicio) => {
     })
 }
 
-
-//COMPROBAR SI EL CLIENTE EXISTE //!OK 
-const buscarIdCliente = (pClienteNombre, pClienteApellido, pClienteTelefono) => {
-    return new Promise((resolve, reject) => {
-        db.query('SELECT clientes.idclientes FROM restaurante.clientes   WHERE clientes.nombre = ? AND clientes.apellidos= ? AND clientes.telefono = ?', [pClienteNombre, pClienteApellido, pClienteTelefono], (error, result) => {
-            if (error) reject(error);
-            resolve(result);
-        });
-    });
-};
-
 //DEVUELVE EL ÚLTIMO ID CREADO EN LA TABLA CLIENTES //! HAY QUE PASARLO JUSTO DESPUES DE INSERTCLIENT
 
 const lastIdCreate = (pId) => {
@@ -70,6 +71,6 @@ const lastIdCreate = (pId) => {
 
 
 module.exports = {
-    resTable, insertService, buscarIdCliente, insertClient, insertHora, lastIdCreate
+    insertTable, insertService, buscarIdCliente, insertClient, insertHora, lastIdCreate
 }
 

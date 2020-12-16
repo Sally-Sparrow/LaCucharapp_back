@@ -20,21 +20,25 @@ POST http://localhost:3000/api/reserve/nueva
 Content-Type: application/json
 
 {
-    "nombre": "Teo4",
-    "apellidos": "Va4",
-    "email": "teo4@gmail.com",
-    "telefono": 44444,
-    "numero": 4,
-    "fecha": "2020-12-01",
-    "hora_inicio": "21:30",
+    "nombre": "Perico",
+    "apellidos": "Palotes",
+    "email": "periquin@gmail.com",
+    "telefono": 625411779,
+    "numero": 10,
+    "fecha": "2020-12-17",
+    "hora_inicio": "14:00",
     "pax": 4,
-    "notas": "El de los libros 4"
+    "notas": ""
 }
 
 ###
 
+# DEVUELVE el último id creado en la tabla clientes 
  GET http://localhost:3000/api/reserve/id
  
+###
+
+POST http://localhost:3000/api/reserve/mesa
 
 
 
