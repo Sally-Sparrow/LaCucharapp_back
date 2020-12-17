@@ -38,6 +38,8 @@ Content-Type: application/json
  
 ###
 
+
+#numero mesa 
 POST http://localhost:3000/api/reserve/mesa
 
 
@@ -45,6 +47,12 @@ POST http://localhost:3000/api/reserve/mesa
 
 ###
 # COMPROBAR si cliente existe 
-GET http://localhost:3000/api/reserve/nueva 
+GET http://localhost:3000/api/reserve/buscarId
+ Content-Type: application/json
 
+ {
+      "nombre": "Manila",
+     "apellidos": "Luzon",
+     "telefono": 234617238
+ }
 
