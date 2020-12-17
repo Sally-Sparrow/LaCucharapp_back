@@ -6,8 +6,8 @@ const apiMapRouter = require('./api/map');
 const apiReserveRouter = require('./api/reserve');
 
 
-router.use('/reserve', apiReserveRouter);
 router.use('/book', apiBookRouter);
 router.use('/map', apiMapRouter); 
+router.use('/reserve', apiReserveRouter);
 
 module.exports = router;

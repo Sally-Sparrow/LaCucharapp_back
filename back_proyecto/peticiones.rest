@@ -1,7 +1,26 @@
 ### BOOK
 # DEVUELVE los datos de las reservas
 GET http://localhost:3000/api/book/2020-12-16
-# Content-Type: application/json
+
+###
+# RECOGE e inserta los datos de una reserva
+POST http://localhost:3000/api/reserve/nueva
+Content-Type: application/json
+
+# {
+#     "nombre": "prueba17",
+#     "apellidos": "apellidos17",
+#     "telefono": 688888888,
+#     "email": "email@gmail.com",
+#     "fecha": "2020-12-27",
+#     "hora": "14:00",
+#     "mesas": [
+#         {"numero": 3},
+#         {"numero": 4}
+#     ],
+#     "personas": 6,
+#     "nota": "Hasta nunki"
+# }
 
 
 
