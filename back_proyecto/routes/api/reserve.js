@@ -1,10 +1,18 @@
 const router = require('express').Router();
-const { buscarIdCliente, insertClient, insertReserva, getIdMesaByNumero, insertMesasEnReserva } = require('../../models/reserve');
+const { buscarIdCliente, insertClient, insertReserva, getIdMesaByNumero, insertMesasEnReserva, getMesasOcupadasByFechaHora } = require('../../models/reserve');
 
 
+//DEVUELVE los numeros de mesa que tienen reserva en una fecha y una hora
+router.get('/:fecha/:hora', async (req, res) => {
+    try{
+        const mesasOcupadas = await getMesasOcupadasByFechaHora( req.params.fecha, req.params.hora );
+        console.log(mesasOcupadas);
+        res.json(mesasOcupadas);
+    }catch( error ){ res.json({ error: error.message }); }
+});
 
-//? INSERTAR DATOS DE RESERVA DEL FORM
 
+// INSERTA DATOS DE RESERVA DEL FORM
 router.post('/nueva', async (req, res) => {
  try{
     //* comprueba si existe el cliente -> recupera su id
@@ -21,7 +29,7 @@ router.post('/nueva', async (req, res) => {
     //* si existe o ya está insertado, sigue:
     if (idCliente.length > 0) { 
         idCliente = idCliente[0];
-        console.log('fin comprobar y recuperar id cliente')
+        console.log('fin comprobar y recuperar id cliente');
         console.log(idCliente);
     }
 
@@ -40,14 +48,14 @@ router.post('/nueva', async (req, res) => {
     for(let mesas of req.body.mesas){
         let idMesa = await getIdMesaByNumero( mesas.numero );
         console.log('recupera id mesa', idMesa[0]);
-        idMesa = idMesa[0]
+        idMesa = idMesa[0];
         //* INSERTAR en tbi-reservas-mesas cada mesa
         const resultInsertMesasReserva = await insertMesasEnReserva( idReserva, idMesa.id );
-        console.log('mesa insertada con idReserva', idReserva, 'e idMesa', idMesa.id );
+        console.log('mesa insertada con idReserva', idReserva, 'e idMesa', idMesa.id );;
     }
 
     }catch (error) {
-        response.json({ error: error.message })
+        res.json({ error: error.message });
     }
 });
 

@@ -58,8 +58,17 @@ const insertMesasEnReserva = ( idReserva, idMesa ) => {
 }
 
 
+// RECUPERA los numeros de mesa que tienen reserva en una fecha y hora
+const getMesasOcupadasByFechaHora = ( pFecha, pHora ) => {
+    return new Promise( (resolve, reject) => {
+        db.query('SELECT mesas.numero FROM restaurante.mesas INNER JOIN restaurante.tbi_reservas_mesas ON mesas.id = tbi_reservas_mesas.fk_mesas INNER JOIN restaurante.reservas ON reservas.id = tbi_reservas_mesas.fk_reservas WHERE reservas.fecha = ? AND reservas.hora_inicio = ?', [ pFecha, pHora ], (error, result) => {
+            if(error) reject(error);
+            resolve(result);
+        });
+    });
+};
 
 module.exports = {
-    buscarIdCliente, insertClient, insertReserva, getIdMesaByNumero, insertMesasEnReserva
+    buscarIdCliente, insertClient, insertReserva, getIdMesaByNumero, insertMesasEnReserva, getMesasOcupadasByFechaHora
 }
 

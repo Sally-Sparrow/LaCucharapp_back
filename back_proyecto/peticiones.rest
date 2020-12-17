@@ -1,6 +1,11 @@
-### BOOK
+### ---- BOOK ----
 # DEVUELVE los datos de las reservas
 GET http://localhost:3000/api/book/2020-12-16
+
+
+### ---- RESERVE ----
+# DEVUELVE las mesas con reserva en una fecha y una hora
+GET http://localhost:3000/api/reserve/2020-11-30/21:00:00
 
 ###
 # RECOGE e inserta los datos de una reserva
@@ -24,46 +29,7 @@ Content-Type: application/json
 
 
 
-###
-
-# EDITAR datos de una reserva (NO FUNCIONA)
-GET http://localhost:3000/api/book/edit/3
-
-### MAP
-# RECUPERA los datos de las mesas para pintar el map
-GET http://localhost:3000/api/map
-###
-
-# CREAR una nueva reserva 
-POST http://localhost:3000/api/reserve/nueva  
-Content-Type: application/json
-
-{
-    "nombre": "Perico",
-    "apellidos": "Palotes",
-    "email": "periquin@gmail.com",
-    "telefono": 625411779,
-    "numero": 10,
-    "fecha": "2020-12-17",
-    "hora_inicio": "14:00",
-    "pax": 4,
-    "notas": ""
-}
-
-###
-
-# DEVUELVE el último id creado en la tabla clientes 
- GET http://localhost:3000/api/reserve/id
- 
-###
-
-POST http://localhost:3000/api/reserve/mesa
 
 
-
-
-###
-# COMPROBAR si cliente existe 
-GET http://localhost:3000/api/reserve/nueva 
 
 

@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { json } = require('express');
 const { getReservasByFecha, getClienteById } = require('../../models/book');
 
-//Devuelve los datos de reservas por fecha para el componente book
+
+//DEVUELVE los datos de reservas por fecha para el componente book
 router.get('/:fecha', async (req, res) => {
     try {
         const reservas = await getReservasByFecha(req.params.fecha);
@@ -14,6 +15,7 @@ router.get('/:fecha', async (req, res) => {
         res.json({ error: error.message })
     }
 });
+
 
 module.exports = router;
 
