@@ -5,7 +5,13 @@ GET http://localhost:3000/api/book/2020-12-16
 
 ### ---- RESERVE ----
 # DEVUELVE las mesas con reserva en una fecha y una hora
-GET http://localhost:3000/api/reserve/2020-11-30/21:00:00
+GET http://localhost:3000/api/reserve
+Content-Type: application/json
+
+{
+    "fecha": "2020-11-30",
+    "hora": "21:00:00"
+}
 
 ###
 # RECOGE e inserta los datos de una reserva

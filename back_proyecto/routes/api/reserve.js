@@ -3,9 +3,9 @@ const { buscarIdCliente, insertClient, insertReserva, getIdMesaByNumero, insertM
 
 
 //DEVUELVE los numeros de mesa que tienen reserva en una fecha y una hora
-router.get('/:fecha/:hora', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
-        const mesasOcupadas = await getMesasOcupadasByFechaHora( req.params.fecha, req.params.hora );
+        const mesasOcupadas = await getMesasOcupadasByFechaHora( req.body.fecha, req.body.hora );
         console.log(mesasOcupadas);
         res.json(mesasOcupadas);
     }catch( error ){ res.json({ error: error.message }); }
