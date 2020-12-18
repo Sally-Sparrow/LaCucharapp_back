@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { json } = require('express');
 const { getReservasByFecha, getClienteById } = require('../../models/book');
 
 
@@ -18,6 +17,9 @@ router.get('/:fecha', async (req, res) => {
 
 
 module.exports = router;
+
+
+
 
 
 

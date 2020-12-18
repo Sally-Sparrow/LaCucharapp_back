@@ -2,6 +2,10 @@
 # DEVUELVE los datos de las reservas
 GET http://localhost:3000/api/book/2020-12-16
 
+###
+# DEVUELVE los datos de una reserva por id para el editForm
+GET http://localhost:3000/api/book/edit/1
+
 
 ### ---- RESERVE ----
 # DEVUELVE las mesas con reserva en una fecha y una hora
