@@ -9,5 +9,41 @@ const getReservaById = (pId) => {
     });
 };
 
-module.exports = { getReservaById }
+//MODIFICA los datos del cliente por id
+
+const updateClient = (pClienteId, { nombre, apellidos, telefono, email }) => {
+    return new Promise((resolve, reject) => {
+        db.query('update clientes set nombre = ?, apellidos = ?, telefono = ?, email = ? where id = ? ', [nombre, apellidos, telefono, email, pClienteId], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+        }
+        )
+    });
+};
+
+// MODIFICA los datos de una reserva por id de la reserva  
+const updateReserva = (pFkCliente, { fecha, hora, pax, notas }) => {
+    return new Promise((resolve, reject) => {
+        db.query('update reservas set fecha = ?, hora_inicio = ? ,pax = ?, notas = ? where reservas.id = ?)', [fecha, hora, pax, notas, pFkCliente], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+            console.log(result);
+        });
+    });
+};
+
+
+// ACTUALIZAR LAS MESAS DE UNA RESERVA -> PASANDO Nº MESA NUEVO, Nª MESA ANTIGUO Y LA ID DE LA RESERVA
+
+const updateMesa = (pIdReserva, pMesaNueva, pMesaAntigua) => {
+    return new Promise((resolve, reject) => {
+        db.query(' UPDATE tbi_reservas_mesas SET fk_mesas = (SELECT mesas.id FROM restaurante.mesas WHERE mesas.numero = ?) WHERE fk_reservas = ? AND fk_mesas = (SELECT mesas.id FROM restaurante.mesas WHERE mesas.numero = ?)', [pMesaAntigua, pIdReserva, pMesaNueva], (error, result) => {
+            if (error) reject(error);
+            resolve(result);
+            console.log(result);
+        });
+    });
+};
+
+module.exports = { getReservaById, updateClient, updateReserva, updateMesa }
 
