@@ -9,7 +9,7 @@ GET http://localhost:3000/api/book/edit/1
 
 ### ---- RESERVE ----
 # DEVUELVE las mesas con reserva en una fecha y una hora
-GET http://localhost:3000/api/reserve
+POST http://localhost:3000/api/reserve
 Content-Type: application/json
 
 {
