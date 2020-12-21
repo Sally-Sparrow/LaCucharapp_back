@@ -1,10 +1,54 @@
 ### ---- BOOK ----
 # DEVUELVE los datos de las reservas
-GET http://localhost:3000/api/book/2020-12-16
+GET http://localhost:3000/api/book/2020-12-03
 
 ###
 # DEVUELVE los datos de una reserva por id para el editForm
 GET http://localhost:3000/api/book/edit/1
+
+###
+
+# RECOGE los datos de la reserva editada 
+# PUT http://localhost:3000/api/book/edit/editada
+# Content-Type: application/json
+
+
+#    {
+#      "nombre": "prueba000",
+#      "apellidos": "apellidos17",
+#      "telefono": 688888880,
+#      "email": "email@gmail.com",
+#      "fecha": "2020-12-27",
+#      "hora": "14:00",
+#      "mesas": [
+#          {"numero": 3} 
+#      ],
+#      "personas": 6,
+#      "nota": "Estoy del PUT hasta la PO"
+#  }
+
+
+###
+
+# RECOGE los datos del cliente actualizado !!!!!!!!
+PUT http://localhost:3000/api/book/edit/cliente
+Content-Type: application/json
+
+{
+    "id":1,
+     "nombre": "Alex",
+     "apellidos": "Rubio",
+     "telefono": 222044997,
+     "email": "alex@mail.com",
+     "fecha": "2020-12-22",
+     "hora": "15:35",
+     "mesas": [
+         {"numero": 2}
+     ],
+     "personas": 4,
+     "nota": "Alex dice que quiere bla bla bla"
+ }
+
 
 
 ### ---- RESERVE ----
@@ -22,20 +66,19 @@ Content-Type: application/json
 POST http://localhost:3000/api/reserve/nueva
 Content-Type: application/json
 
-# {
-#     "nombre": "prueba17",
-#     "apellidos": "apellidos17",
-#     "telefono": 688888888,
-#     "email": "email@gmail.com",
-#     "fecha": "2020-12-27",
-#     "hora": "14:00",
-#     "mesas": [
-#         {"numero": 3},
-#         {"numero": 4}
-#     ],
-#     "personas": 6,
-#     "nota": "Hasta nunki"
-# }
+ {
+     "nombre": "Rigoberta",
+     "apellidos": "Thunderfuck",
+     "telefono": 640927366,
+     "email": "alaska@mail.com",
+     "fecha": "2020-12-27",
+     "hora": "14:00",
+     "mesas": [
+         {"numero": 3}
+     ],
+     "personas": 6,
+     "nota": "Hasta nunki"
+ }
 
 
 

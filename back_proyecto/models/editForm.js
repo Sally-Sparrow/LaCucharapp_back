@@ -12,19 +12,20 @@ const getReservaById = (pId) => {
 //MODIFICA los datos del cliente por id
 
 const updateClient = (pClienteId, { nombre, apellidos, telefono, email }) => {
+    console.log(pClienteId, nombre, apellidos, telefono, email);
     return new Promise((resolve, reject) => {
+
         db.query('update clientes set nombre = ?, apellidos = ?, telefono = ?, email = ? where id = ? ', [nombre, apellidos, telefono, email, pClienteId], (error, result) => {
             if (error) reject(error);
             resolve(result);
-        }
-        )
+        });
     });
 };
 
 // MODIFICA los datos de una reserva por id de la reserva  
 const updateReserva = (pFkCliente, { fecha, hora, pax, notas }) => {
     return new Promise((resolve, reject) => {
-        db.query('update reservas set fecha = ?, hora_inicio = ? ,pax = ?, notas = ? where reservas.id = ?)', [fecha, hora, pax, notas, pFkCliente], (error, result) => {
+        db.query('update reservas set fecha = ?, hora_inicio = ? ,pax = ?, notas = ? where reservas.id = ?', [fecha, hora, pax, notas, pFkCliente], (error, result) => {
             if (error) reject(error);
             resolve(result);
             console.log(result);
