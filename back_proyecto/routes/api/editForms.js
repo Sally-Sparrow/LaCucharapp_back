@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
 
 router.put('/cliente', async (req, res) => {
     try {
-        let idCliente = await updateClient(req.body.id, req.body);
+        let idCliente = await updateClient(req.body.idReserva, req.body);
         console.log('Cliente id', idCliente);
         const result = await getClienteById(req.body.nombre, req.body.telefono);
         const clienteActualizado = await updateReserva(req.body.id, req.body);

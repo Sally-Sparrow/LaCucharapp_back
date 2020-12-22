@@ -35,7 +35,7 @@ PUT http://localhost:3000/api/book/edit/cliente
 Content-Type: application/json
 
 {
-    "id":1,
+    "idReserva":1,
      "nombre": "Alex",
      "apellidos": "Rubio",
      "telefono": 222044997,
@@ -67,17 +67,17 @@ POST http://localhost:3000/api/reserve/nueva
 Content-Type: application/json
 
  {
-     "nombre": "Rigoberta",
-     "apellidos": "Thunderfuck",
-     "telefono": 640927366,
-     "email": "alaska@mail.com",
-     "fecha": "2020-12-27",
+     "nombre": "Alberto",
+     "apellidos": "Chicote",
+     "telefono": 640922222,
+     "email": "alberto@mail.com",
+     "fecha": "2020-12-22",
      "hora": "14:00",
      "mesas": [
          {"numero": 3}
      ],
      "personas": 6,
-     "nota": "Hasta nunki"
+     "nota": "Guarro!!!"
  }
 
 
